@@ -39,7 +39,7 @@ export default function FeedbackPage() {
 
   return (
     <>
-      <PageHeader title="Feedback" description="Choose which reviews appear on the public website." actions={<Link to="/#reviews" target="_blank" className={buttonClass('outline')}><ExternalLink className="size-4" /> View on website</Link>} />
+      <PageHeader title="Feedback" description="Choose which reviews appear on the public website." actions={<Link to="/#reviews" className={buttonClass('outline')}><ExternalLink className="size-4" /> View on website</Link>} />
       <div className="mb-6 grid gap-4 sm:grid-cols-3">
         <StatCard label="Average rating" value={avg.toFixed(1)} icon={Star} accent="amber" hint={`${data.length} reviews`} />
         <StatCard label="Published" value={data.filter((f) => f.published).length} icon={Globe} accent="green" />

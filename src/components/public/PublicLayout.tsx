@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
-import { Mail, Menu, Phone, X, MapPin, Clock } from 'lucide-react'
+import { Clock, LayoutDashboard, Mail, MapPin, Menu, Phone, X } from 'lucide-react'
 import { useSettings } from '@/context/SettingsContext'
 import { whatsappLink } from '@/lib/whatsapp'
 import { cn } from '@/lib/utils'
@@ -178,6 +178,13 @@ export default function PublicLayout() {
       </main>
       <Footer />
       <WhatsAppFloat />
+      <Link
+        to="/admin/login"
+        className="fixed bottom-5 left-5 z-40 inline-flex items-center gap-2 rounded-full bg-navy-900/90 px-4 py-2.5 text-xs font-medium text-white shadow-xl shadow-navy-900/30 ring-1 ring-white/10 backdrop-blur transition hover:bg-navy-800 sm:bottom-8 sm:left-8 sm:text-sm"
+      >
+        <LayoutDashboard className="size-4 text-aqua-300" />
+        Contractor dashboard demo
+      </Link>
     </div>
   )
 }

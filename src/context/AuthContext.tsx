@@ -14,6 +14,13 @@ interface AuthApi {
 }
 
 const DEMO_KEY = 'bluestone-demo-session'
+
+// Storage can be blocked (private windows, sandboxed embeds), so never let it throw.
+const session = {
+  get: (k: string) => { try { return sessionStorage.getItem(k) } catch { return null } },
+  set: (k: string, v: string) => { try { sessionStorage.setItem(k, v) } catch { /* ignore */ } },
+  remove: (k: string) => { try { sessionStorage.removeItem(k) } catch { /* ignore */ } },
+}
 const AuthContext = createContext<AuthApi | null>(null)
 
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -22,7 +29,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!supabase) {
-      if (sessionStorage.getItem(DEMO_KEY)) setUser({ email: 'demo@bluestonepools.co.uk', name: 'Alex Morgan', isDemo: true })
+      if (session.get(DEMO_KEY)) setUser({ email: 'demo@bluestonepools.co.uk', name: 'Alex Morgan', isDemo: true })
       setLoading(false)
       return
     }
@@ -52,11 +59,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     },
     signInDemo() {
       if (isSupabaseConfigured) return
-      sessionStorage.setItem(DEMO_KEY, '1')
+      session.set(DEMO_KEY, '1')
       setUser({ email: 'demo@bluestonepools.co.uk', name: 'Alex Morgan', isDemo: true })
     },
     async signOut() {
-      sessionStorage.removeItem(DEMO_KEY)
+      session.remove(DEMO_KEY)
       if (supabase) await supabase.auth.signOut()
       setUser(null)
     },

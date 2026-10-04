@@ -102,7 +102,7 @@ export default function SettingsPage() {
               </>
             ) : (
               <>
-                <p>Changes are saved in this browser only. Add Supabase credentials to <code className="rounded bg-slate-100 px-1">.env</code> to use a real database.</p>
+                <p>This is a demo: changes are saved in this browser only. The live system stores everything in a secure cloud database.</p>
                 <Button variant="outline" className="w-full" icon={<RotateCcw className="size-4" />} onClick={reset}>Reset demo data</Button>
               </>
             )}

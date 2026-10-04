@@ -8,6 +8,13 @@ export function whatsappLink(number: string, message = DEFAULT_WHATSAPP_MESSAGE)
   return `https://wa.me/${digits}?text=${encodeURIComponent(message)}`
 }
 
+/** Opens WhatsApp via a real link click (window.open is blocked in some embeds). */
 export function openWhatsApp(number: string, message?: string) {
-  window.open(whatsappLink(number, message), '_blank', 'noopener,noreferrer')
+  const a = document.createElement('a')
+  a.href = whatsappLink(number, message)
+  a.target = '_blank'
+  a.rel = 'noopener noreferrer'
+  document.body.appendChild(a)
+  a.click()
+  a.remove()
 }

@@ -69,7 +69,7 @@ function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
         })}
       </nav>
       <div className="border-t border-white/10 p-3">
-        <Link to="/" target="_blank" className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-400 hover:bg-white/5 hover:text-white">
+        <Link to="/" className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-400 hover:bg-white/5 hover:text-white">
           <ExternalLink className="size-[18px]" /> View public website
         </Link>
       </div>
@@ -113,7 +113,7 @@ export default function AdminLayout() {
         {user?.isDemo && (
           <div className="flex items-center justify-center gap-2 bg-aqua-400 px-4 py-1.5 text-center text-xs font-medium text-navy-950">
             <FlaskConical className="size-3.5" />
-            Demo mode — sample data stored in this browser only. No Supabase project connected.
+            Demo dashboard with sample data. Your changes stay in this browser only.
             <button onClick={async () => { if (await confirm({ title: 'Reset demo data?', message: 'This restores all original sample records and discards changes made in this browser.', confirmLabel: 'Reset data', danger: true })) db.resetDemo() }} className="ml-1 cursor-pointer underline underline-offset-2 hover:no-underline">Reset data</button>
           </div>
         )}

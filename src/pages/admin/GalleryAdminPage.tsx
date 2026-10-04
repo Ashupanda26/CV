@@ -96,7 +96,7 @@ export default function GalleryAdminPage() {
         title="Gallery"
         description="Projects shown in the public website gallery."
         actions={<>
-          <Link to="/#projects" target="_blank" className={buttonClass('outline')}><ExternalLink className="size-4" /> View on website</Link>
+          <Link to="/#projects" className={buttonClass('outline')}><ExternalLink className="size-4" /> View on website</Link>
           <Button icon={<Plus className="size-4" />} onClick={() => openEditor('new')}>Add project</Button>
         </>}
       />

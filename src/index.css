@@ -45,6 +45,7 @@
 
 @layer base {
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  html, body { overflow-x: clip; }
   body { @apply bg-white text-navy-900 font-sans; }
   ::selection { background: var(--color-aqua-200); color: var(--color-navy-900); }
   :focus-visible { outline: 2px solid var(--color-aqua-500); outline-offset: 2px; }

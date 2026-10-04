@@ -1,8 +1,29 @@
-// Placeholder photography from Unsplash (free to use under the Unsplash License).
-// Swap these for the client's own project photos before launch.
+// Site imagery.
+// - Normal build: placeholder photography from Unsplash (free under the Unsplash License).
+// - Shareable single-file build (`npm run build:share`): architectural renders from
+//   src/assets/renders, embedded in the page because the viewer blocks remote images.
+// Swap both for the client's own project photos before launch.
+import hero from '@/assets/renders/hero.jpg'
+import about from '@/assets/renders/about.jpg'
+import design from '@/assets/renders/design.jpg'
+import r01 from '@/assets/renders/r01.jpg'
+import r02 from '@/assets/renders/r02.jpg'
+import r03 from '@/assets/renders/r03.jpg'
+import r04 from '@/assets/renders/r04.jpg'
+import r05 from '@/assets/renders/r05.jpg'
+import r06 from '@/assets/renders/r06.jpg'
+import r07 from '@/assets/renders/r07.jpg'
+import r08 from '@/assets/renders/r08.jpg'
+import r09 from '@/assets/renders/r09.jpg'
+import r10 from '@/assets/renders/r10.jpg'
+import r11 from '@/assets/renders/r11.jpg'
+import r12 from '@/assets/renders/r12.jpg'
+
+const USE_RENDERS = import.meta.env.MODE === 'artifact'
+
 const u = (id: string, w = 1600) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`
 
-export const IMAGES = {
+const PHOTOS = {
   hero: u('1613490493576-7fde63acd811', 2400),
   about: u('1600596542815-ffad4c1539a9', 1600),
   viewerBg: u('1530053969600-caed2596d242', 1600),
@@ -29,5 +50,17 @@ export const IMAGES = {
     maintenance: u('1530053969600-caed2596d242', 1000),
   },
 }
+
+// Same slots as PHOTOS, so gallery/project indexes line up in both builds.
+const RENDERS: typeof PHOTOS = {
+  hero,
+  about,
+  viewerBg: r11,
+  quoteBg: r08,
+  pools: [r02, r01, r07, r12, r03, r10, r05, r08, r04, r06, r09, r11],
+  services: { design, construction: r04, renovation: r07, landscaping: r03, maintenance: r12 },
+}
+
+export const IMAGES = USE_RENDERS ? RENDERS : PHOTOS
 
 export const pool = (i: number) => IMAGES.pools[i % IMAGES.pools.length]!

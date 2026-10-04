@@ -123,7 +123,7 @@ export default function DashboardPage() {
           )}
       </div>
 
-      <div className="mt-6 grid gap-6 xl:grid-cols-3">
+      <div className="mt-6 grid gap-6 xl:grid-cols-3 [&>*]:min-w-0">
         <Card className="xl:col-span-2">
           <CardHeader title="Leads generated" description="New enquiries per month, last 12 months" />
           <div className="p-4 sm:p-6">{loading ? <Skeleton className="h-[260px]" /> : <LeadsAreaChart data={leadsByMonth} />}</div>
@@ -134,7 +134,7 @@ export default function DashboardPage() {
         </Card>
       </div>
 
-      <div className="mt-6 grid gap-6 xl:grid-cols-3">
+      <div className="mt-6 grid gap-6 xl:grid-cols-3 [&>*]:min-w-0">
         <Card className="xl:col-span-2">
           <CardHeader title="Monthly enquiries" description="By enquiry type, last 6 months" />
           <div className="p-4 sm:p-6">{loading ? <Skeleton className="h-[280px]" /> : <EnquiriesStackedChart data={enquiriesByMonth} keys={GROUP_KEYS} />}</div>

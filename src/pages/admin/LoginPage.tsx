@@ -71,7 +71,7 @@ export default function LoginPage() {
                 <FlaskConical className="size-4" /> Demo mode available
               </div>
               <p className="mt-1.5 text-sm text-slate-600">
-                No Supabase project is connected, so the dashboard runs on sample data stored in your browser. No password needed.
+                This demo runs on realistic sample data. No password needed: explore leads, projects, quotes and more.
               </p>
               <Button variant="primary" className="mt-4 w-full" onClick={enterDemo}>Enter demo dashboard</Button>
             </div>
@@ -84,7 +84,7 @@ export default function LoginPage() {
             <Button type="submit" variant={demoAvailable ? 'outline' : 'primary'} className="w-full" loading={loading} disabled={demoAvailable} icon={<Lock className="size-4" />}>
               Sign in
             </Button>
-            {demoAvailable && <p className="text-center text-xs text-slate-400">Email sign-in activates once Supabase is configured.</p>}
+            {demoAvailable && <p className="text-center text-xs text-slate-400">Staff email sign-in is enabled on the live system.</p>}
           </form>
         </div>
       </div>
